@@ -5,13 +5,17 @@
 
 //Constructor sets the reference phrase
 tappity::tappity(std::string reference)
+ : this.reference(reference), input("")
 {
+
 }
 
 //Provide the input to be compared to the reference. Before this 
 //function is called, the input should be considered an empty string
 void tappity::entry(std::string input)
 {
+  this.input = input;
+
 }
 
 //Compares the length of the reference to that of the input and
@@ -19,7 +23,28 @@ void tappity::entry(std::string input)
 //same length
 int tappity::length_difference()
 {
-  return 0;
+
+  //case when exact same length
+  if(this.reference.length() == this.input.length())
+  {
+    return 0;
+  }
+  //Not same length, do advanced checking
+  else 
+  {
+    int diff = this.reference.length() - this.input.length();
+    //Convert to absolute val
+    if(diff < 0)
+    {
+      return diff * -1;
+    }
+    //otherwise already positive
+    else{
+      return diff;
+    }
+  }
+
+  return -1;
 }
 
 //Compares the content of the reference to that of the input and
@@ -36,5 +61,39 @@ int tappity::length_difference()
 //locations in another string that has 16 characters, the accuracy is 50.
 double tappity::accuracy()
 {
-  return 0;
+  int numDiff = 0;
+
+  //This block is when exact same length of both strings
+  if(this.reference.length() == this.input.length())
+  {
+    for(int i=0; i<this.reference.length();i++)
+    {
+      if(this.reference[i] != this.input[i])
+      {
+        numDiff++;
+      }
+    }
+    return (numDiff/this.reference.length()) * 100.0;
+  }
+
+
+ 
+  //This block when reference shorter than input
+  else if(reference.length() < input.length())
+  {
+
+  }
+
+  //This block when input shorter than reference
+  else if(input.length() < reference.length())
+  {
+
+  }
+  else 
+  {
+    return -1.0;
+  }
+
+
+  return -1.0;
 }

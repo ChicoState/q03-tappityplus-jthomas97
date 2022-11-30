@@ -9,6 +9,9 @@ class tappity
 {
     private:
 
+    string reference;
+    string input;
+
     public:
         //Constructor sets the reference phrase
         tappity(std::string reference);
