@@ -113,3 +113,12 @@ TEST(tappityTest, accuracy_min_limit)
 	ASSERT_GE(a, 0.0);
 }
 
+TEST(tappityTest, accuracy_both_blank)
+{
+	tappity t = tappity("");
+
+	double a = t.accuracy();
+
+	ASSERT_EQ(a, 100.0);
+}
+

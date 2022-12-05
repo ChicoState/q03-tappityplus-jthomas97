@@ -66,6 +66,11 @@ double tappity::accuracy()
   //This block is when exact same length of both strings
   if(reference.length() == input.length())
   {
+    if(reference.length() == 0)
+    {
+      return 100.0;
+    }
+     
     numDiff = reference.length();
     for(int i=0; i<reference.length();i++)
     {

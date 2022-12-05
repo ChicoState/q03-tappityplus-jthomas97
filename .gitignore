@@ -33,3 +33,4 @@
 *.gcov
 *.gcno
 tappity.gcno
+tappityTest
