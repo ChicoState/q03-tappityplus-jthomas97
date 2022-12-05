@@ -5,7 +5,7 @@
 
 //Constructor sets the reference phrase
 tappity::tappity(std::string reference)
- : this.reference(reference), input("")
+ : reference(reference), input("")
 {
 
 }
@@ -14,7 +14,7 @@ tappity::tappity(std::string reference)
 //function is called, the input should be considered an empty string
 void tappity::entry(std::string input)
 {
-  this.input = input;
+  this->input = input;
 
 }
 
@@ -25,14 +25,14 @@ int tappity::length_difference()
 {
 
   //case when exact same length
-  if(this.reference.length() == this.input.length())
+  if(reference.length() == input.length())
   {
     return 0;
   }
   //Not same length, do advanced checking
   else 
   {
-    int diff = this.reference.length() - this.input.length();
+    int diff = reference.length() - input.length();
     //Convert to absolute val
     if(diff < 0)
     {
@@ -64,16 +64,17 @@ double tappity::accuracy()
   int numDiff = 0;
 
   //This block is when exact same length of both strings
-  if(this.reference.length() == this.input.length())
+  if(reference.length() == input.length())
   {
-    for(int i=0; i<this.reference.length();i++)
+    numDiff = reference.length();
+    for(int i=0; i<reference.length();i++)
     {
-      if(this.reference[i] != this.input[i])
+      if(reference[i] != input[i])
       {
-        numDiff++;
+        numDiff--;
       }
     }
-    return (numDiff/this.reference.length()) * 100.0;
+    return (numDiff/reference.length()) * 100.0;
   }
 
 
@@ -89,11 +90,7 @@ double tappity::accuracy()
   {
 
   }
-  else 
-  {
-    return -1.0;
-  }
 
 
-  return -1.0;
+  return 0.0;
 }
