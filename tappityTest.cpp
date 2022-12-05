@@ -65,3 +65,51 @@ TEST(tappityTest, accuracy_same_string)
 
 	ASSERT_EQ(a, 100.0);
 }
+
+TEST(tappityTest, accuracy_reference_longer)
+{
+	tappity t = tappity("himynameisjudeee");
+	t.entry("himyname");
+
+	double a = t.accuracy();
+
+	ASSERT_EQ(a, 50.0);
+}
+
+TEST(tappityTest, accuracy_input_longer)
+{
+	tappity t = tappity("himyname");
+	t.entry("himynameisjudeee");
+
+	double a = t.accuracy();
+
+	ASSERT_EQ(a, 50.0);
+}
+
+TEST(tappityTest, accuracy_default_input)
+{
+	tappity t = tappity("himyname");
+
+	double a = t.accuracy();
+
+	ASSERT_EQ(a, 0.0);
+}
+
+TEST(tappityTest, accuracy_max_limit)
+{
+	tappity t = tappity("himyname");
+
+	double a = t.accuracy();
+
+	ASSERT_LE(a, 100.0);
+}
+
+TEST(tappityTest, accuracy_min_limit)
+{
+	tappity t = tappity("himyname");
+
+	double a = t.accuracy();
+
+	ASSERT_GE(a, 0.0);
+}
+

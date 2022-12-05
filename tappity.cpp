@@ -78,19 +78,47 @@ double tappity::accuracy()
   }
 
 
- 
-  //This block when reference shorter than input
-  else if(reference.length() < input.length())
+  //This block when reference not equal input
+  else 
   {
+      int lenReference = reference.length();
+      int lenInput = input.length();
+      double numRight = 0.0;
 
+      if(lenInput > lenReference)
+      {
+        numRight = lenInput-lenReference;
+        for(int i=0; i<reference.length(); i++)
+        {
+          if(reference[i] != input[i])
+          {
+            numRight--;
+          }
+        }
+        // std::cout << "WE IN input longer than ref\n";
+        return (numRight/input.length()) * 100.0;
+      }else {
+
+        //check when input not changed
+        if(input.length() == 0)
+        {
+          return 0.0;
+        }
+        numRight = lenReference-lenInput;
+        for(int i=0; i<input.length(); i++)
+        {
+          if(reference[i] != input[i])
+          {
+            numRight--;
+          }
+        }
+  
+        // std::cout << "WE IN ref longer than input\n";
+        double accuracy = (numRight/reference.length()) * 100.0;
+        return accuracy;
+      }
   }
 
-  //This block when input shorter than reference
-  else if(input.length() < reference.length())
-  {
 
-  }
-
-
-  return 0.0;
+  return -1.0;
 }
